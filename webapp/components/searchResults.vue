@@ -1,18 +1,19 @@
 <template>
-    <v-overlay class="results" :value="overlay">
+    <b-overlay class="results">
         <div v-if="empty_results" class="results-list">
-            <searchResult v-for="result in results" :key="result.id" :searchResult="result">
+            <searchResult v-for="movie in results" :key="movie.id" :movie="movie">
             </searchResult>
         </div>
         <div v-else class="no-results">
             {{no_results}}
         </div>
-    </v-overlay>
+    </b-overlay>
 </template>
 <script>
+    import searchResult from '@/components/searchResult';
     export default {
         props: {
-            result: {
+            results: {
                 type: Array,
                 required: true,
             }
@@ -25,40 +26,18 @@
             }
         },
         computed: {
-            // empty_results() {
-                // return this.results.length > 0 ? true : false;
-            // },
+            empty_results() {
+                return this.results && this.results.length > 0 ? true : false;
+            },
         },
         methods: {},
     };
 </script>
 <style scoped>
 .results {
-	top: 48px;
-	width: 100%;
-	align-items: start;
-	background-color: rgba(0, 0, 0, 0.9);
+	background-color: rgba(0, 0, 0, 0.2);
 	overflow-y: scroll;
-	justify-content: start;
-	.v-overlay__content {
-		position: relative;
-		display: flex;
-		width: 100%;
-	}
-}
-
-.results-list {
-	flex-grow: 1;
-	&:hover {
-		cursor: pointer;
-	}
-}
-
-.no-results {
-	padding-top: 75px;
-	font-size: 1.25rem;
-	text-align: center;
-	margin-left: auto;
-	margin-right: auto;
+    display: flex;
+    flex-flow: row wrap;
 }
 </style>
