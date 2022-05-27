@@ -1,5 +1,4 @@
 import got from 'got';
-import bodyParser from 'body-parser';
 const tmdb_url = process.env.TMDB_V3_URL;
 const tmdb_key = process.env.TMDB_KEY;
 const locale = process.env.TMDB_LOCALE;
