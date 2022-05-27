@@ -34,7 +34,7 @@ export default {
   methods: {
     searchInput(value) {
       this.$axios
-        .$get(`/imdb/movies?search=${value}`)
+        .$get(`/tmdb/movies?search=${value}`)
         .then((res) => {
           this.results = res
         })
