@@ -25,10 +25,16 @@ export default {
             results: []
         }
     },
+    watch: {
+        results: function(newVal, oldVal) {
+            console.log('new', newVal, 'old', oldVal)
+        }
+    },
     methods: {
         searchInput(value) {
             this.$axios.$get(`/imdb/movies?search=${value}`)
             .then(res => {
+                this.results = res
                 console.log(res);
             })
             .catch(err => {
