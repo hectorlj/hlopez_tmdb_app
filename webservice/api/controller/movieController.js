@@ -1,4 +1,4 @@
-import * as imdb from '../external/imdb.js';
+import * as tmdb from '../external/tmdb.js';
 export const getters ={
     async searchMovies (req, res) {
         try {
@@ -7,7 +7,7 @@ export const getters ={
             if (!search || search.length === 0) {
                 res.status(204).json();
             } else {
-                let movies = await imdb.getters.getMovies(search);
+                let movies = await tmdb.getters.getMovies(search);
                 res.status(200).json(movies)
             }
         } catch (err) {
